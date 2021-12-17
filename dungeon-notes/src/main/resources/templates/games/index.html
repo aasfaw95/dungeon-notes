@@ -8,6 +8,8 @@
 
 <h1>All Games</h1>
 
+<p th:unless="${games} and ${games.size()}">No games!</p>
+
     <ul>
         <th:block th:each="game : ${games}">
             <li th:text="${game}"></li>
