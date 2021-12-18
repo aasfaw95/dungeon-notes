@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org/">
-<head>
-    <meta charset="UTF-8">
-    <title>Dungeon Games</title>
-</head>
+<head th:replace="fragments :: head"></head>
 <body>
 
 <h1>All Games</h1>
@@ -14,7 +11,7 @@
 
     <ul>
         <th:block th:each="game : ${games}">
-            <li th:text="${game}"></li>
+            <li th:text="${game.name}"></li>
         </th:block>
     </ul>
 </body>
