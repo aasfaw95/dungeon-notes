@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org/">
 <head th:replace="fragments :: head"></head>
-<body>
+<body class="container">
 
 <h1>All Games</h1>
 
@@ -9,10 +9,15 @@
 
 <p th:unless="${games} and ${games.size()}">No games!</p>
 
-    <ul>
-        <th:block th:each="game : ${games}">
-            <li th:text="${game.name}"></li>
-        </th:block>
-    </ul>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+        </tr>
+    </thead>
+    <tr th:each="game : ${games}">
+        <td th:text="${game.name}"></td>
+    </tr>
+</table>
 </body>
 </html>
