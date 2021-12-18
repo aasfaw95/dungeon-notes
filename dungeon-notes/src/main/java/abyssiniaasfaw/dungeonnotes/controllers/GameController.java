@@ -28,8 +28,9 @@ public class GameController {
     }
 
     @PostMapping("create")
-    public String createGame(@RequestParam String gameName) {
-        games.add(new Game(gameName));
+    public String createGame(@RequestParam String gameName,
+                             @RequestParam String gameDescription) {
+        games.add(new Game(gameName, gameDescription));
         return "redirect:";
     }
 }

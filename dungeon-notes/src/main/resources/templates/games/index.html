@@ -13,10 +13,12 @@
     <thead>
         <tr>
             <th>Name</th>
+            <th>Description</th>
         </tr>
     </thead>
     <tr th:each="game : ${games}">
         <td th:text="${game.name}"></td>
+        <td th:text="${game.description}"></td>
     </tr>
 </table>
 </body>
