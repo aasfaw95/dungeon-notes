@@ -5,7 +5,7 @@
 
 <h1>All Games</h1>
 
-<nav th:replace="fragments :: navigation"></nav>
+<header th:replace="fragments :: header"></header>
 
 <p th:unless="${games} and ${games.size()}">No games!</p>
 

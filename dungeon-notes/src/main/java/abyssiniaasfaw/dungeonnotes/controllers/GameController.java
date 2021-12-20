@@ -33,4 +33,26 @@ public class GameController {
         GameData.add(new Game(gameName, gameDescription));
         return "redirect:";
     }
+
+    @GetMapping("delete")
+    public String displayDeleteGameForm(Model model) {
+        model.addAttribute("title", "Delete Games");
+        model.addAttribute("games", GameData.getAll());
+        return "games/delete";
+
+
+    }
+
+    @PostMapping("delete")
+    public String processDeleteGamesForm(@RequestParam(required = false) int[] gameIds) {
+
+        if (gameIds != null) {
+            for (int id : gameIds) {
+                GameData.remove(id);
+            }
+        }
+
+        return "redirect:";
+
+    }
 }
