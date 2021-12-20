@@ -1,5 +1,6 @@
 package abyssiniaasfaw.dungeonnotes.controllers;
 
+import abyssiniaasfaw.dungeonnotes.data.GameData;
 import abyssiniaasfaw.dungeonnotes.models.Game;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,11 +15,10 @@ import java.util.List;
 @RequestMapping("games")
 public class GameController {
 
-    private static List<Game> games = new ArrayList<>();
 
     @GetMapping
     public String displayAllGames(Model model) {
-       model.addAttribute("games", games);
+       model.addAttribute("games", GameData.getAll());
         return "games/index";
     }
 
@@ -30,7 +30,7 @@ public class GameController {
     @PostMapping("create")
     public String createGame(@RequestParam String gameName,
                              @RequestParam String gameDescription) {
-        games.add(new Game(gameName, gameDescription));
+        GameData.add(new Game(gameName, gameDescription));
         return "redirect:";
     }
 }
