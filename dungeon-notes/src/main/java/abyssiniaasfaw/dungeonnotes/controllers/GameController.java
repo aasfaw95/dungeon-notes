@@ -4,10 +4,8 @@ import abyssiniaasfaw.dungeonnotes.data.GameData;
 import abyssiniaasfaw.dungeonnotes.models.Game;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,9 +26,8 @@ public class GameController {
     }
 
     @PostMapping("create")
-    public String createGame(@RequestParam String gameName,
-                             @RequestParam String gameDescription) {
-        GameData.add(new Game(gameName, gameDescription));
+    public String processCreateGameForm(@ModelAttribute Game newGame) {
+        GameData.add(newGame);
         return "redirect:";
     }
 
