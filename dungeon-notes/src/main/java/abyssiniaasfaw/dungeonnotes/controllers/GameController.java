@@ -4,8 +4,10 @@ import abyssiniaasfaw.dungeonnotes.data.GameData;
 import abyssiniaasfaw.dungeonnotes.models.Game;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,12 +23,19 @@ public class GameController {
     }
 
     @GetMapping("create")
-    public String renderCreateGameForm() {
+    public String displayCreateGameForm(Model model) {
+        model.addAttribute("title", "Create Game");
+        model.addAttribute(new Game());
         return "games/create";
     }
 
     @PostMapping("create")
-    public String processCreateGameForm(@ModelAttribute Game newGame) {
+    public String processCreateGameForm(@ModelAttribute @Valid Game newGame,
+                                        Errors errors, Model model) {
+        if(errors.hasErrors()) {
+            model.addAttribute("title", "Create Game");
+            return "games/create";
+        }
         GameData.add(newGame);
         return "redirect:";
     }

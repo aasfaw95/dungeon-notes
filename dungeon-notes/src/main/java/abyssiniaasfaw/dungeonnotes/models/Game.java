@@ -1,5 +1,8 @@
 package abyssiniaasfaw.dungeonnotes.models;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.util.Objects;
 
 public class Game {
@@ -7,12 +10,21 @@ public class Game {
     private int id;
     private static int nextId = 1;
 
+    @NotBlank(message = "Name is required.")
+    @Size(min = 3, max = 50, message = "Name must be between 3 and 50 characters")
     private String name;
+
+    @Size(max = 500)
     private String description;
 
+
     public Game(String name, String description) {
+        this();
         this.name = name;
         this.description = description;
+    }
+
+    public Game() {
         this.id = nextId;
         nextId++;
     }
