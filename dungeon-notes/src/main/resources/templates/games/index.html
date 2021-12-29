@@ -15,12 +15,14 @@
             <th>ID</th>
             <th>Name</th>
             <th>Description</th>
+            <th>Class</th>
         </tr>
     </thead>
     <tr th:each="game : ${games}">
         <td th:text="${game.id}"></td>
         <td th:text="${game.name}"></td>
         <td th:text="${game.description}"></td>
+        <td th:text="${game.type.displayName}"></td>
     </tr>
 </table>
 </body>

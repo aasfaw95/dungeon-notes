@@ -17,11 +17,14 @@ public class Game {
     @Size(max = 500)
     private String description;
 
+    private CharacterClass type;
 
-    public Game(String name, String description) {
+
+    public Game(String name, String description, CharacterClass type) {
         this();
         this.name = name;
         this.description = description;
+        this.type =type;
     }
 
     public Game() {
@@ -47,6 +50,14 @@ public class Game {
 
     public int getId() {
         return id;
+    }
+
+    public CharacterClass getType() {
+        return type;
+    }
+
+    public void setType(CharacterClass type) {
+        this.type = type;
     }
 
     @Override

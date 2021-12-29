@@ -1,6 +1,7 @@
 package abyssiniaasfaw.dungeonnotes.controllers;
 
 import abyssiniaasfaw.dungeonnotes.data.GameData;
+import abyssiniaasfaw.dungeonnotes.models.CharacterClass;
 import abyssiniaasfaw.dungeonnotes.models.Game;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,6 +20,7 @@ public class GameController {
     @GetMapping
     public String displayAllGames(Model model) {
        model.addAttribute("games", GameData.getAll());
+       model.addAttribute("title", "All Games");
         return "games/index";
     }
 
@@ -26,6 +28,7 @@ public class GameController {
     public String displayCreateGameForm(Model model) {
         model.addAttribute("title", "Create Game");
         model.addAttribute(new Game());
+        model.addAttribute("types",CharacterClass.values());
         return "games/create";
     }
 

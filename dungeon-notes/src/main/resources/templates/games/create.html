@@ -20,6 +20,17 @@
         <p class="error" th:errors="${game.description}"></p>
     </div>
     <div class="form-group">
+        <label>Character Class
+        <select th:field="${game.type}">
+            <option th:each="type : ${types}"
+                    th:value="${type}"
+                    th:text="${type.displayName}">
+
+            </option>
+        </select>
+        </label>
+    </div>
+    <div class="form-group">
         <input type="submit" value="Create Game" class="btn btn-success">
     </div>
 </form>
