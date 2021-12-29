@@ -1,25 +1,26 @@
 package abyssiniaasfaw.dungeonnotes.controllers;
 
-import abyssiniaasfaw.dungeonnotes.data.GameData;
+import abyssiniaasfaw.dungeonnotes.data.GameRepository;
 import abyssiniaasfaw.dungeonnotes.models.CharacterClass;
 import abyssiniaasfaw.dungeonnotes.models.Game;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.ArrayList;
-import java.util.List;
 
 @Controller
 @RequestMapping("games")
 public class GameController {
 
+    @Autowired
+    private GameRepository gameRepository;
 
     @GetMapping
     public String displayAllGames(Model model) {
-       model.addAttribute("games", GameData.getAll());
+       model.addAttribute("games", gameRepository.findAll());
        model.addAttribute("title", "All Games");
         return "games/index";
     }
@@ -39,14 +40,14 @@ public class GameController {
             model.addAttribute("title", "Create Game");
             return "games/create";
         }
-        GameData.add(newGame);
+        gameRepository.save(newGame);
         return "redirect:";
     }
 
     @GetMapping("delete")
     public String displayDeleteGameForm(Model model) {
         model.addAttribute("title", "Delete Games");
-        model.addAttribute("games", GameData.getAll());
+        model.addAttribute("games", gameRepository.findAll());
         return "games/delete";
 
 
@@ -57,7 +58,7 @@ public class GameController {
 
         if (gameIds != null) {
             for (int id : gameIds) {
-                GameData.remove(id);
+                gameRepository.deleteById(id);
             }
         }
 
