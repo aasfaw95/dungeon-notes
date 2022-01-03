@@ -1,19 +1,11 @@
 package abyssiniaasfaw.dungeonnotes.models;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
-import java.util.Objects;
 
 @Entity
-public class Game {
-
-    @Id
-    @GeneratedValue
-    private int id;
-
+public class Game extends AbstractEntity{
 
     @NotBlank(message = "Name is required.")
     @Size(min = 3, max = 50, message = "Name must be between 3 and 50 characters")
@@ -51,10 +43,6 @@ public class Game {
         this.description = description;
     }
 
-    public int getId() {
-        return id;
-    }
-
     public CharacterClass getType() {
         return type;
     }
@@ -68,16 +56,5 @@ public class Game {
         return name;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Game game = (Game) o;
-        return id == game.id;
-    }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
-    }
 }
