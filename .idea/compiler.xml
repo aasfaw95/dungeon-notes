@@ -2,8 +2,8 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel>
-      <module name="dungeon-notes.dungeon-notes.main" target="16" />
-      <module name="dungeon-notes.dungeon-notes.test" target="16" />
+      <module name="dungeon-notes.dungeon-notes.main~1" target="16" />
+      <module name="dungeon-notes.dungeon-notes.test~1" target="16" />
     </bytecodeTargetLevel>
   </component>
 </project>
